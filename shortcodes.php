@@ -1,14 +1,19 @@
 <?php
+
+use Underpin\Abstracts\Underpin;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // Add this loader.
-add_action( 'underpin/before_setup', function ( $file, $class ) {
+Underpin::attach( 'setup', new \Underpin\Factories\Observer( 'shortcodes', [
+	'update' => function ( Underpin $plugin, $args ) {
 		require_once( plugin_dir_path( __FILE__ ) . 'Shortcode.php' );
 		require_once( plugin_dir_path( __FILE__ ) . 'Shortcode_Instance.php' );
-		Underpin\underpin()->get( $file, $class )->loaders()->add( 'shortcodes', [
+		$plugin->loaders()->add( 'shortcodes', [
 			'instance' => 'Underpin_Shortcodes\Abstracts\Shortcode',
 			'default'  => 'Underpin_Shortcodes\Factories\Shortcode_Instance',
 		] );
-}, 10, 2 );
+	},
+] ) );
