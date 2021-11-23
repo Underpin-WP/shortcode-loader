@@ -7,10 +7,11 @@
  */
 
 
-namespace Underpin_Shortcodes\Abstracts;
+namespace Underpin\Shortcodes\Abstracts;
 
+use Underpin\Loaders\Logger;
 use Underpin\Traits\Feature_Extension;
-use function Underpin\underpin;
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -68,7 +69,7 @@ abstract class Shortcode {
 	public function do_actions() {
 		add_shortcode( $this->shortcode, [ $this, 'shortcode' ] );
 
-		underpin()->logger()->log(
+		Logger::log(
 			'notice',
 			'shortcode_added',
 			'A shortcode has been added',
@@ -94,7 +95,7 @@ abstract class Shortcode {
 		if ( isset( $this->$key ) ) {
 			return $this->$key;
 		} else {
-			return new \WP_Error( 'batch_task_param_not_set', 'The batch task key ' . $key . ' could not be found.' );
+			return new \WP_Error( 'post_template_param_not_set', 'The batch task key ' . $key . ' could not be found.' );
 		}
 	}
 
