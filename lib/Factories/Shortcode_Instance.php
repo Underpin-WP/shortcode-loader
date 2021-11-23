@@ -1,9 +1,9 @@
 <?php
 
-namespace Underpin_Shortcodes\Factories;
+namespace Underpin\Shortcodes\Factories;
 
 use Underpin\Traits\Instance_Setter;
-use Underpin_Shortcodes\Abstracts\Shortcode;
+use Underpin\Shortcodes\Abstracts\Shortcode;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

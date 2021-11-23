@@ -7,10 +7,11 @@
  */
 
 
-namespace Underpin_Shortcodes\Abstracts;
+namespace Underpin\Shortcodes\Abstracts;
 
+use Underpin\Loaders\Logger;
 use Underpin\Traits\Feature_Extension;
-use function Underpin\underpin;
+
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -68,7 +69,7 @@ abstract class Shortcode {
 	public function do_actions() {
 		add_shortcode( $this->shortcode, [ $this, 'shortcode' ] );
 
-		underpin()->logger()->log(
+		Logger::log(
 			'notice',
 			'shortcode_added',
 			'A shortcode has been added',
