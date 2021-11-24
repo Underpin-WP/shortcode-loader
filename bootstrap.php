@@ -8,6 +8,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Add this loader.
 Underpin::attach( 'setup', new \Underpin\Factories\Observers\Loader( 'shortcodes', [
-	'instance' => 'Underpin\Shortcodes\Abstracts\Shortcode',
-	'default'  => 'Underpin\Shortcodes\Factories\Shortcode_Instance',
+	'abstraction_class' => 'Underpin\Shortcodes\Abstracts\Shortcode',
+	'default_factory'  => 'Underpin\Shortcodes\Factories\Shortcode_Instance',
 ] ) );
